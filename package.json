@@ -1,0 +1,11 @@
+{
+  "name": "lab5",
+  "version": "1.0.0",
+  "description": "lab 5 local git",
+  "main": "\u001b[D\u001b[D\u001b[D\u001blab5-server.js)",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "stephen.stone",
+  "license": "ISC"
+}
