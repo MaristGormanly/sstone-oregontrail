@@ -1,16 +1,11 @@
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-app.get('/', function (req, res) {
-  res.sendFile('views/index.html',{root: __dirname})
-});
-
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.listen(1337, function() {
-  console.log('Example app listening on 1337');
-});
+if(document.addEventListener) {
+	document.addEventListener('keypress', function(event) {
+		const keyName = event.keyCode;
+		if (keyName === 32) {
+			location.replace("mainmenu");
+		}
+	});
+}
+else {
+	alert("Sorry. Your browser does not support JavaScript.");
+}

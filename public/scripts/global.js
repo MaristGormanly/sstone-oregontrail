@@ -1,16 +1,26 @@
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-app.get('/', function (req, res) {
-  res.sendFile('views/index.html',{root: __dirname})
-});
-
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.listen(1337, function() {
-  console.log('Example app listening on 1337');
-});
+if (typeof(Storage) !== "undefined") {
+	window.onload = window.resizeTo(1160,720);
+	var x = document.cookie;
+	if(x == "musicState=off") {
+		music.autoplay = false;
+	}
+	else {
+		music.autoplay = true;
+	}
+	document.addEventListener('keypress', function(event) {
+		const keyName = event.keyCode;
+		
+		if(keyName === 52) {
+			if(music.paused) {
+				music.play();
+				document.cookie = "musicState=on";
+			} else {
+				music.pause();
+				document.cookie = "musicState=off";
+			}		
+		}
+	});
+}
+else {
+	alert("Sorry. Your browser does not support JavaScript.");
+}

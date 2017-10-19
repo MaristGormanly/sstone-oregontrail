@@ -1,16 +1,21 @@
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-app.get('/', function (req, res) {
-  res.sendFile('views/index.html',{root: __dirname})
-});
-
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.listen(1337, function() {
-  console.log('Example app listening on 1337');
-});
+if(document.addEventListener) {
+	document.addEventListener('keypress', function(event) {
+		const keyName = event.keyCode;
+	
+		if(keyName === 49) {
+			location.replace("game");
+		}
+		if(keyName === 51) {
+			location.replace("top10");
+		}
+		if(keyName === 52) {
+			if(music.paused) {
+				document.getElementById("sound").innerHTML = "4. Turn Sound On";
+			} else {
+				document.getElementById("sound").innerHTML = "4. Turn Sound Off";
+			}		
+		}
+	});
+} else {
+	alert("Sorry. Your browser does not support JavaScript.");
+}
