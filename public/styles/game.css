@@ -6,6 +6,8 @@
 }
 #container {
 	color:yellow;
+	font-size:20px;
+	
 }
 #container h1 {
 	text-align:center;
@@ -13,4 +15,21 @@
 }
 p {
 	font-size:20px;
+}
+#gameContainer {
+	margin:auto;
+	width:50%;
+}
+#gameContainer li{
+	padding: 8px;
+}
+#gameContainer input{
+	margin: 8px;
+	padding:5px;
+}
+button {
+	font-size:20px;
+}
+ul {
+	list-style-type:none;
 }
