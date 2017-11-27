@@ -19,6 +19,10 @@ app.get('/game', function (req, res) {
   res.sendFile('views/game.html',{root: __dirname})
 });
 
+app.get('/trail', function (req, res) {
+  res.sendFile('views/trail.html',{root: __dirname})
+});
+
 //Require our gameController so that we can access the data
 var game = require('./controllers/gameController');
 

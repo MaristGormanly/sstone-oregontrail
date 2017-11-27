@@ -48,7 +48,7 @@ var startGame3 = "<p>What month would you like to leave?</p>" +
 	"<li id=\"mayOption\" >May</li>" +
 	"<li id=\"juneOption\" >June</li>" +
 	"<li id=\"julyOption\" >July</li>" +
-	"</ol>"
+	"</ol>";
 	
 exports.startGameScreens.push(startGame3);
 
@@ -63,6 +63,7 @@ var startGame4 = "<p>Congratulations! You are ready to travel the Oregon Trail!<
 	"<li id =\"member4\" ></li>" +
 	"<li id =\"profession\" ></li>" +
 	"<li id =\"bankAmount\" ></li>" +
-	"<li id = \"monthLeaving\" ></li>";
+	"<li id = \"monthLeaving\" ></li></ul>" +
+	"<p id=\"startGame\">Press the spacebar to continue</p>";
 	
 exports.startGameScreens.push(startGame4);

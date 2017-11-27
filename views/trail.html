@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trail Trekking</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Oregon Trail game developed with nodeJS, JavaScript, HTML5, and CSS">
+	<meta name="keywords" content="Stephen,Stone,HTML5,CSS,JavaScript,jsnode">
+	<meta name="author" content="Stephen Stone">
+	<link href="/styles/global.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/trail.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div id="container">
+		<div id="messageBox">
+			
+		</div>
+		<div id="imageHolder">
+			
+		</div>
+		<div id="changePaceContainer">
+			<div id="paceText">
+				<span>What pace do you want to set?</span>
+				<ol>
+					<li id="steady">Steady</li>
+					<li id="strenuous">Strenuous</li>
+					<li id="grueling">Grueling</li>
+					<li id="resting">Resting</li>
+				</ol>
+			</div>
+		</div>
+		<div id="wagonContainer">
+			<img id="wagon" src="/images/wagon.jpg" >
+		</div>
+		<div id="gameContainer">
+			<ul>
+				<li id="currentDate"></li>
+				<li id="milesTravelled"></li>
+				<li id="milesLandmark"></li>
+				<li id="partyHealth"></li>
+				<li id="aliveMembers"></li>
+				<li id="currentMoney"></li>
+				<li id="currentWeather"></li>
+				<li id="currentTerrain"></li>
+				<li id="currentPace"></li>
+				<li id="changePace">Change Pace (Press Enter)</li>
+			</ul>
+		</div>
+		<div id="featureMessage"></div>
+	<audio id="music" src="/music/bensoundsunny.mp3"></audio>	
+	</div>
+	<script src="/scripts/trail.js"></script>
+	<script src="/scripts/global.js"></script>
+</body>
+</html>

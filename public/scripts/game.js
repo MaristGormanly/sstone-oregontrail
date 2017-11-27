@@ -8,7 +8,6 @@ if(document.addEventListener) {
 	});
 	
 	var profession;
-	
 	//Listen for key presses
 	document.addEventListener('keypress', function(event) {
 		const keyName = event.keyCode;
@@ -40,34 +39,38 @@ if(document.addEventListener) {
 			if (keyName === 49) {
 				month = "March";
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			//Check for 2 keypress
 			if (keyName === 50) {
 				month = "April"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			//Check for 3 keypress
 			if (keyName === 51) {
 				month = "May"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			//Check for 4 keypress
 			if (keyName === 52) {
 				month = "June"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			//Check for 5 keypress
 			if (keyName === 53) {
 				month = "July;"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 		}
-		
+		if(currentGameScreen === 3){
+			if(keyName === 32){
+				location.replace("/trail");
+			}
+		}	
 	});
 	
 	//Listen for clicks
@@ -129,7 +132,7 @@ if(document.addEventListener) {
 			if(x === marchOption) {
 				month = "March"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			
 			//Listen for option 2
@@ -137,7 +140,7 @@ if(document.addEventListener) {
 			if(x === aprilOption) {
 				month = "April"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			
 			//Listen for option 3
@@ -145,7 +148,7 @@ if(document.addEventListener) {
 			if(x === mayOption) {
 				month = "May"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			
 			//Listen for option 4
@@ -153,7 +156,7 @@ if(document.addEventListener) {
 			if(x === juneOption) {
 				month = "June"
 				monthChoice(month);
-				showSettings():
+				showSettings();
 			}
 			
 			//Listen for option 5
@@ -163,8 +166,19 @@ if(document.addEventListener) {
 				monthChoice(month);
 				showSettings();
 			}
-		}		
+		}	
+		if(currentGameScreen === 3){
+			var gameStart = document.getElementById('gameStart');
+			if(x === gameStart){
+				startGame();
+			}
+		}	
 	});
+	
+	//start the game and move to trail.html
+	function startGame(){
+		location.replace('trail');
+	}
 		
 	//Call new gameScreen
 	function gameScreen(screenNumber) {
@@ -248,7 +262,10 @@ if(document.addEventListener) {
 				//Send html returned back to this javascript file
 				console.log("received back:" + data);
 				dataJSON = JSON.parse(data);
-				populateSettings(dataJSON);
+				if(data.profession = profession){
+					populateSettings(dataJSON);
+				}
+				
 			});
 		});	
 	}

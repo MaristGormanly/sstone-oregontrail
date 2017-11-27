@@ -37,7 +37,8 @@ if(document.addEventListener) {
 			} else {
 				sound.innerHTML = "4. Turn Sound Off";
 			}
-		}
+		} 
+	});
 } else {
 	alert("Sorry. Your browser does not support JavaScript.");
 }
