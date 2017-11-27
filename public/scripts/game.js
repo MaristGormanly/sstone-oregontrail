@@ -24,12 +24,12 @@ if(document.addEventListener) {
 			}
 			//Check for 2 keypress
 			if (keyName === 50) {
-				profession = "Carpenter"
+				profession = "Carpenter";
 				professionChoice(profession);
 			}
 			//Check for 3 keypress
 			if (keyName === 51) {
-				profession = "Farmer"
+				profession = "Farmer";
 				professionChoice(profession);
 			}			
 		}
@@ -43,25 +43,25 @@ if(document.addEventListener) {
 			}
 			//Check for 2 keypress
 			if (keyName === 50) {
-				month = "April"
+				month = "April";
 				monthChoice(month);
 				showSettings();
 			}
 			//Check for 3 keypress
 			if (keyName === 51) {
-				month = "May"
+				month = "May";
 				monthChoice(month);
 				showSettings();
 			}
 			//Check for 4 keypress
 			if (keyName === 52) {
-				month = "June"
+				month = "June";
 				monthChoice(month);
 				showSettings();
 			}
 			//Check for 5 keypress
 			if (keyName === 53) {
-				month = "July;"
+				month = "July";
 				monthChoice(month);
 				showSettings();
 			}
@@ -130,7 +130,7 @@ if(document.addEventListener) {
 			//Listen for option 1
 			var marchOption = document.getElementById('marchOption');
 			if(x === marchOption) {
-				month = "March"
+				month = "March";
 				monthChoice(month);
 				showSettings();
 			}
@@ -138,7 +138,7 @@ if(document.addEventListener) {
 			//Listen for option 2
 			var aprilOption = document.getElementById('aprilOption');
 			if(x === aprilOption) {
-				month = "April"
+				month = "April";
 				monthChoice(month);
 				showSettings();
 			}
@@ -146,7 +146,7 @@ if(document.addEventListener) {
 			//Listen for option 3
 			var mayOption = document.getElementById('mayOption');
 			if(x === mayOption) {
-				month = "May"
+				month = "May";
 				monthChoice(month);
 				showSettings();
 			}
@@ -154,7 +154,7 @@ if(document.addEventListener) {
 			//Listen for option 4
 			var juneOption = document.getElementById('juneOption');
 			if(x === juneOption) {
-				month = "June"
+				month = "June";
 				monthChoice(month);
 				showSettings();
 			}
@@ -162,7 +162,7 @@ if(document.addEventListener) {
 			//Listen for option 5
 			var julyOption = document.getElementById('julyOption');
 			if(x === julyOption) {
-				month = "July"
+				month = "July";
 				monthChoice(month);
 				showSettings();
 			}
