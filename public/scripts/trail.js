@@ -183,7 +183,7 @@ if(document.getElementById){
 			//listen for option 2/give ride 30 miles away
 			if(x === option2){
 				milesTravelled = milesTravelled - 30;
-				userSetting.money = userSettings.money + 100;
+				userSettings.money = userSettings.money + 100;
 				document.getElementById('messageBox').innerHTML = "The tribesmen gave you a dreamcatcher worth $100";
 				document.getElementById('featureMessage').innerHTML = "";
 				laramieBoolean = false;
@@ -633,7 +633,7 @@ if(document.getElementById){
 			//Give supplies/money
 			if(keyName === 49){
 				//check if money <= 0
-				if((userSetting.money - 300) <= 0){
+				if((userSettings.money - 300) <= 0){
 					document.getElementById('messageBox').innerHTML = "You don't have enough money to give";
 				} else {
 					userSettings.money = userSettings.money - 300;
@@ -1534,6 +1534,9 @@ if(document.getElementById){
 			gameWinBoolean = true;
 	}
 
+	function saveScore{
+
+	}
 } else {
 	alert("Sorry! Your browser does not support Javascript!");
 }
