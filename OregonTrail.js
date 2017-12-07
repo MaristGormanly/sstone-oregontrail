@@ -30,7 +30,7 @@ var game = require('./controllers/gameController');
 app.get('/game/getNewGameScreen/:screenId', function (req, res){
 	var gameScreen = game.startGameScreens[req.params.screenId];
 	console.log("\n this is the main node file! \n" + gameScreen);
-	
+
 	res.setHeader('Content-Type','text/html');
 	res.send(gameScreen);
 });
@@ -39,18 +39,18 @@ app.get('/game/getNewGameScreen/:screenId', function (req, res){
 app.get('/game/saveProfession/:profession', function (req, res){
 	var profession = req.params.profession;
 	game.userSettings.profession = profession;
-	
+
 	if(profession === "Banker"){
 		game.userSettings.money = 1000;
 	}
 	if(profession === "Carpenter"){
-		game.userSettings.money = 900;
+		game.userSettings.money = 700;
 	}
 	if(profession === "Farmer") {
-		game.userSettings.money = 800;
+		game.userSettings.money = 400;
 	}
 	console.log("\n this is the main node file! \n" + profession);
-	
+
 	res.setHeader('Content-Type','text/html');
 	res.send(game.userSettings);
 });
@@ -60,9 +60,9 @@ app.get('/game/savePlayerName/:playerId/:playerName', function (req, res){
 	var playerId = req.params.playerId;
 	var playerName = req.params.playerName;
 	game.userSettings.playerNames[playerId] = playerName;
-	
+
 	console.log("\n this is the main node file! \n" + playerId + ": " + playerName);
-	
+
 	res.setHeader('Content-Type','text/html');
 	res.send(game.userSettings);
 });
@@ -71,9 +71,9 @@ app.get('/game/savePlayerName/:playerId/:playerName', function (req, res){
 app.get('/game/saveMonthChoice/:month', function (req, res){
 	var month = req.params.month;
 	game.userSettings.month = month;
-	
+
 	console.log("\n this is the main node file! \n" + month);
-	
+
 	res.setHeader('Content-Type','text/html');
 	res.send(game.userSettings);
 });

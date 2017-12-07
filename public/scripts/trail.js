@@ -11,6 +11,7 @@ if(document.getElementById){
 		currentYear = 1868,
 		daysTravelled = 0,
 		currentHealth = 100,
+		score,
 		milesTravelled = 0,
 		partyAlive = [true,true,true,true,true],
 		membersAlive,
@@ -30,7 +31,7 @@ if(document.getElementById){
 		dallesBoolean = false,
 		dallesBoolean1 = false,
 		dallesBoolean2 = false,
-		dallesBoolean3 = false,
+		rockScore = 0,
 		random;
 
 	//Load the start screen
@@ -167,16 +168,22 @@ if(document.getElementById){
 
 			//Listen for option 1//give supplies and money
 			if(x === option1){
-				userSettings.money = userSettings.money - 300;
-				document.getElementById('messageBox').innerHTML = "You gave the tribesmen $200";
-				document.getElementById('featureMessage').innerHTML = "";
-				laramieBoolean = false;
-				travelDay();
-				currentGameDay++;
+				//check if money is 0
+				if((userSettings.money - 300) <= 0){
+					document.getElementById('messageBox').innerHTML = "You gave the tribesmen $200";
+				} else{
+					userSettings.money = userSettings.money - 300;
+					document.getElementById('messageBox').innerHTML = "You gave the tribesmen $200";
+					document.getElementById('featureMessage').innerHTML = "";
+					laramieBoolean = false;
+					travelDay();
+					currentGameDay++;
+				}
 			}
 			//listen for option 2/give ride 30 miles away
 			if(x === option2){
 				milesTravelled = milesTravelled - 30;
+				userSetting.money = userSettings.money + 100;
 				document.getElementById('messageBox').innerHTML = "The tribesmen gave you a dreamcatcher worth $100";
 				document.getElementById('featureMessage').innerHTML = "";
 				laramieBoolean = false;
@@ -230,13 +237,16 @@ if(document.getElementById){
 			if(x === option1){
 				document.getElementById('messageBox').innerHTML = "Your initials are forever engraved into Independence Rock";
 				document.getElementById('featureMessage').innerHTML = "";
+				rockScore = 10;
 				independenceBoolean = false;
 				travelDay();
 				currentGameDay++;
 			}
 			if(x === option2){
 				document.getElementById('messageBox').innerHTML = "";
-				document.getElementById('featureMessage').innerHTML = "An older traveller tells you";
+				document.getElementById('featureMessage').innerHTML = "An older seasoned traveller tells you to be wary of the " +
+				"Dalles River. There are many options of how to float down the river. The first two rocks affect your money and health " +
+				"and the last rock affects death and money.";
 				independenceBoolean = false;
 				travelDay();
 				currentGameDay++;
@@ -256,12 +266,17 @@ if(document.getElementById){
 
 			//Give supplies/money
 			if(x === option1){
-				userSettings.money = userSettings.money - 300;
-				document.getElementById('messageBox').innerHTML = "You gave the survivor $200";
-				document.getElementById('featureMessage').innerHTML = "";
-				boiseBoolean = false;
-				travelDay();
-				currentGameDay++;
+				//check if money <= 0
+				if((userSettings.money - 300) <= 0){
+					document.getElementById('messageBox').innerHTML = "You don't have enough money to give";
+				} else{
+					userSettings.money = userSettings.money - 300;
+					document.getElementById('messageBox').innerHTML = "You gave the survivor $200";
+					document.getElementById('featureMessage').innerHTML = "";
+					boiseBoolean = false;
+					travelDay();
+					currentGameDay++;
+				}
 			} //Ride 20 miles to the attack site
 			if(x === option2){
 				milesTravelled = milesTravelled + 20;
@@ -419,48 +434,48 @@ if(document.getElementById){
 						partyAlive[4] = false;
 						document.getElementById('messageBox').innerHTML = userSettings.playerNames[4] +
 						" was thrown overboard and drowned";
-						document.getElementById('featureMessage').innerHTML = "<p>There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-						"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+						document.getElementById('featureMessage').innerHTML = "";
+						dallesBoolean2 = false;
+						currentGameDay++;
+						travelDay();
 					} else if(partyAlive[3] === true){
 						partyAlive[3] = false;
 						document.getElementById('messageBox').innerHTML = userSettings.playerNames[3] +
 						" was thrown overboard and drowned";
-						document.getElementById('featureMessage').innerHTML = "<p>There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-						"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+						document.getElementById('featureMessage').innerHTML = "";
 						dallesBoolean2 = false;
-						dallesBoolean3 = true;
+						currentGameDay++;
+						travelDay();
 					} else if(partyAlive[2] === true){
 						partyAlive[2] = false;
 						document.getElementById('messageBox').innerHTML = userSettings.playerNames[2] +
 						" was thrown overboard and drowned";
-						document.getElementById('featureMessage').innerHTML = "<p>There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-						"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+						document.getElementById('featureMessage').innerHTML = "";
 						dallesBoolean2 = false;
-						dallesBoolean3 = true;
+						currentGameDay++;
+						travelDay();
 					} else if(partyAlive[1] === true){
 						partyAlive[1] = false;
 						document.getElementById('messageBox').innerHTML = userSettings.playerNames[1] +
 						" was thrown overboard and drowned";
-						document.getElementById('featureMessage').innerHTML = "<p>There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-						"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+						document.getElementById('featureMessage').innerHTML = "";
 						dallesBoolean2 = false;
-						dallesBoolean3 = true;
+						currentGameDay++;
+						travelDay();
 					} else {
 						partyAlive[0] = false;
 						document.getElementById('messageBox').innerHTML = userSettings.playerNames[0] +
 						" was thrown overboard and drowned";
-						document.getElementById('featureMessage').innerHTML = "<p>There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-						"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+						document.getElementById('featureMessage').innerHTML = "";
 						dallesBoolean2 = false;
 						gameOverBoolean = true;
 					}
 				} else {
 					document.getElementById('messageBox').innerHTML = "";
-					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
-					" There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-					"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock.</p>"
 					dallesBoolean2 = false;
-					dallesBoolean3 = true;
+					currentGameDay++;
+					travelDay();
 				}
 			} //Go right 3o% chance of loss of money
 			if(x === option2){
@@ -468,64 +483,17 @@ if(document.getElementById){
 					userSettings.money = userSettings.money - 200;
 					document.getElementById('messageBox').innerHTML = "";
 					document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
-					" and $200 worth of supplies fell overboard. There is one last large rock formation up" +
-					"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
-					"<li id=\"option2\">Go right</li></ol>";
+					" and $200 worth of supplies fell overboard.</p>";
 					dallesBoolean2 = false;
-					dallesBoolean3 = true;
+					currentGameDay++;
+					travelDay();
 				} else {
 					userSettings.money = userSettings.money - 300;
 					document.getElementById('messageBox').innerHTML = "";
-					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
-					" There is one last large rock formation up ahead. What would you like to do?</p><p>You may:" +
-					"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock.</p>";
 					dallesBoolean2 = false;
-					dallesBoolean3 = true;
-				}
-			}
-		} //3rd river option
-		if(dallesBoolean3 === true){
-			var option1 = document.getElementById("option1");
-			var option2 = document.getElementById("option2");
-			random = Math.random();
-
-			//Go left 10% chance of supply tipping
-			if(x === option1){
-				if(random <= 0.1){
-					userSettings.money = userSettings.money - 300;
-					document.getElementById('messageBox').innerHTML = "";
-					document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
-					" and $300 worth of supplies fell overboard but you made it through the river! Only 50 " +
-					"  miles until Oregon City!</p>";
-					dallesBoolean3 = false;
-					travelDay();
 					currentGameDay++;
-				} else{
-					document.getElementById('messageBox').innerHTML = "";
-					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
-					" You made it safely through the Dalles! Only 50 miles until Oregon City!</p>";
-					dallesBoolean3 = false;
 					travelDay();
-					currentGameDay++;
-				}
-			} //Go right 1o% chance of loss of health
-			if(x === option2){
-				if(random <= 0.1){
-					currentHealth = currentHealth - 3;
-					document.getElementById('messageBox').innerHTML = "";
-					document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
-					" and your head slams against the rock. You lost 3 health but you made it through the " +
-					"Dalles River and are only 50 miles from Oregon City!";
-					dallesBoolean3 = false;
-					travelDay();
-					currentGameDay++;
-				} else {
-					document.getElementById('messageBox').innerHTML = "";
-					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
-					" You made it safely through the Dalles! Only 50 miles until Oregon City!</p>";
-					dallesBoolean3 = false;
-					travelDay();
-					currentGameDay++;
 				}
 			}
 		}
@@ -535,8 +503,18 @@ if(document.getElementById){
 	document.addEventListener('keypress', function(event){
 		const keyName = event.keyCode;
 
-		//Check if user is at a landmark
-		if(kansasBoolean === true) {
+		//Check for game over
+		if(gameOverBoolean === true){
+			if(keyName === 32){
+				location.replace("mainmenu");
+			}
+		} //check for victory
+		else if(gameWinBoolean === true){
+			if(keyName === 32){
+				location.replace("mainmenu");
+			}
+		}//Check if user is at a landmark
+		else if(kansasBoolean === true) {
 			//Ford the river
 			if(keyName === 49){
 				random = Math.random();
@@ -627,6 +605,12 @@ if(document.getElementById){
 					kansasBoolean = false;
 					travelDay();
 					currentGameDay++;
+				} else {
+					kansasBoolean = false;
+					document.getElementById('messageBox').innerHTML = "You safely crossed the river";
+					document.getElementById('featureMessage').innerHTML = "";
+					travelDay();
+					currentGameDay++;
 				}
 			}
 			//Take a ferry across
@@ -648,16 +632,22 @@ if(document.getElementById){
 		} else if(laramieBoolean === true){
 			//Give supplies/money
 			if(keyName === 49){
-				userSettings.money = userSettings.money - 300;
-				document.getElementById('messageBox').innerHTML = "You gave the tribesmen $200";
-				document.getElementById('featureMessage').innerHTML = "";
-				laramieBoolean = false;
-				travelDay();
-				currentGameDay++;
+				//check if money <= 0
+				if((userSetting.money - 300) <= 0){
+					document.getElementById('messageBox').innerHTML = "You don't have enough money to give";
+				} else {
+					userSettings.money = userSettings.money - 300;
+					document.getElementById('messageBox').innerHTML = "You gave the tribesmen $200";
+					document.getElementById('featureMessage').innerHTML = "";
+					laramieBoolean = false;
+					travelDay();
+					currentGameDay++;
+				}
 			}
 			if(keyName === 50){
 				//Take them 30 miles off the trail to their home
 				milesTravelled = milesTravelled - 30;
+				userSettings.money = userSettings.money + 100;
 				document.getElementById('messageBox').innerHTML = "The tribesmen gave you a dreamcatcher worth $100 as a gift";
 				document.getElementById('featureMessage').innerHTML = "";
 				laramieBoolean = false;
@@ -677,6 +667,9 @@ if(document.getElementById){
 				//50% chance of hurting someone
 				if(random <= 0.5) {
 					currentHealth = currentHealth - 5;
+					laramieBoolean = false;
+					travelDay();
+					currentGameDay++;
 				} //50% chance of killing someone
 				else {
 					if(partyAlive[4] === true){
@@ -705,12 +698,15 @@ if(document.getElementById){
 			if(keyName === 49){
 				document.getElementById('messageBox').innerHTML = "Your initials are forever engraved into Independence Rock";
 				document.getElementById('featureMessage').innerHTML = "";
+				rockScore = 10;
 				independenceBoolean = false;
 				travelDay();
 				currentGameDay++;
 			}
 			if(keyName === 50){
-				document.getElementById('featureMessage').innerHTML = "An older traveller tells you";
+				document.getElementById('featureMessage').innerHTML = "An older seasoned traveller tells you to be wary of the " +
+				"Dalles River. There are many options of how to float down the river. The first two rocks affect your money and health " +
+				"and the last rock affects death and money.";
 				document.getElementById('messageBox').innerHTML = "";
 				independenceBoolean = false;
 				travelDay();
@@ -725,12 +721,18 @@ if(document.getElementById){
 		} else if(boiseBoolean === true){
 			//Give supplies/money
 			if(keyName === 49){
-				userSettings.money = userSettings.money - 300;
-				document.getElementById('messageBox').innerHTML = "You gave the survivor $200";
-				document.getElementById('featureMessage').innerHTML = "";
-				boiseBoolean = false;
-				travelDay();
-				currentGameDay++;
+				//check if money <= 0
+				if((userSetting.money - 200) <= 0){
+					document.getElementById('messageBox').innerHTML = "You don't have enough money to give";
+				} else {
+					userSettings.money = userSettings.money - 200;
+					document.getElementById('messageBox').innerHTML = "You gave the survivor $200";
+					document.getElementById('featureMessage').innerHTML = "";
+					boiseBoolean = false;
+					travelDay();
+					currentGameDay++;
+				}
+
 			} //Ride 20 miles to the attack site
 			if(keyName === 50){
 				milesTravelled = milesTravelled + 20;
@@ -769,7 +771,7 @@ if(document.getElementById){
 							gameOverBoolean = true;
 						}
 				}
-				
+
 				boiseBoolean = false;
 				travelDay();
 				currentGameDay++;
@@ -793,24 +795,16 @@ if(document.getElementById){
 					" and $200 worth of supplies fell overboard. There is another large rock formation up" +
 					"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
 					"<li id=\"option2\">Go right</li></ol>";
+					dallesBoolean = false;
+					dallesBoolean1 = true;
 				} else{
 					document.getElementById('messageBox').innerHTML = "";
 					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
 					" There is another large rock formation up ahead. What would you like to do?</p><p>You may:" +
 					"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+					dallesBoolean = false;
+					dallesBoolean1 = true;
 				}
-					random = Math.random();
-
-					//Go left.
-					if(keyName === 49){
-						userSettings.money = userSettings.money - 300;
-						document.getElementById('messageBox').innerHTML = "";
-						document.getElementById('featureMessage').innerHTML = "success";
-					} //Go right.
-					if(keyName === 50){
-
-					}
-
 			} //Go right. 20% chance of injury
 			if(keyName === 50){
 				if(random <= 0.2){
@@ -820,39 +814,132 @@ if(document.getElementById){
 					" and $200 worth of supplies fell overboard. There is another large rock formation up" +
 					"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
 					"<li id=\"option2\">Go right</li></ol>";
+					dallesBoolean = false;
+					dallesBoolean1 = true;
 				} else {
 					document.getElementById('messageBox').innerHTML = "";
 					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
 					" There is another large rock formation up ahead. What would you like to do?</p><p>You may:" +
 					"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+					dallesBoolean = false;
+					dallesBoolean1 = true;
 				}
-					random = Math.random();
+			}
+		} else if(dallesBoolean1 === true) {
+			random = Math.random();
 
-					//Go left 40% chance of injury
-					if(keyName === 49){
-						if(random <= 0.4){
-							userSettings.money = userSettings.money - 300;
-							document.getElementById('messageBox').innerHTML = "";
-							document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
-							" and $200 worth of supplies fell overboard. There is another large rock formation up" +
-							"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
-							"<li id=\"option2\">Go right</li></ol>";
-						} else{
+			//Go left 20% chance of health loss
+			if(keyName === 49){
+				if(random <= 0.2){
+					currentHealth = currentHealth - 3;
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
+					" and your leg slams against the rock. You lost 3 health. There is another large rock formation up" +
+					"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
+					"<li id=\"option2\">Go right</li></ol>";
+					dallesBoolean1 = false;
+					dallesBoolean2 = true;
 
-						}
-					}//Go right 10% chance of money loss
-					if(keyName === 50){
-						if(random <= 0.1){
-							userSettings.money = userSettings.money - 300;
-							document.getElementById('messageBox').innerHTML = "";
-							document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
-							" and $200 worth of supplies fell overboard. There is another large rock formation up" +
-							"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
-							"<li id=\"option2\">Go right</li></ol>";
-						} else {
+				} else{
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
+					" There is another large rock formation up ahead. What would you like to do?</p><p>You may:" +
+					"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+					dallesBoolean1 = false;
+					dallesBoolean2 = true;
+				}
+			} //Go right 2o% chance of loss of money
+			if(keyName === 50){
+				if(random <= 0.2){
+					userSettings.money = userSettings.money - 300;
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
+					" and $200 worth of supplies fell overboard. There is another large rock formation up" +
+					"  ahead. What would you like to do?</p><p>You may: </p><ol><li id=\"option1\">Go left</li>" +
+					"<li id=\"option2\">Go right</li></ol>";
+					dallesBoolean1 = false;
+					dallesBoolean2 = true;
+				} else {
+					userSettings.money = userSettings.money - 300;
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock." +
+					" There is another large rock formation up ahead. What would you like to do?</p><p>You may:" +
+					"</p><ol><li id=\"option1\">Go left</li><li id=\"option2\">Go right</li></ol>";
+					dallesBoolean1 = false;
+					dallesBoolean2 = true;
+				}
+			}
+		} else if(dallesBoolean2 === true){
+			random = Math.random();
 
-						}
+			//Go left 20% chance of someone dying
+			if(keyName === 49){
+				if(random <= 0.2){
+					if(partyAlive[4] === true){
+						partyAlive[4] = false;
+						document.getElementById('messageBox').innerHTML = userSettings.playerNames[4] +
+						" was thrown overboard and drowned";
+						document.getElementById('featureMessage').innerHTML = "";
+						dallesBoolean2 = false;
+						currentGameDay++;
+						travelDay();
+					} else if(partyAlive[3] === true){
+						partyAlive[3] = false;
+						document.getElementById('messageBox').innerHTML = userSettings.playerNames[3] +
+						" was thrown overboard and drowned";
+						document.getElementById('featureMessage').innerHTML = "";
+						dallesBoolean2 = false;
+						currentGameDay++;
+						travelDay();
+					} else if(partyAlive[2] === true){
+						partyAlive[2] = false;
+						document.getElementById('messageBox').innerHTML = userSettings.playerNames[2] +
+						" was thrown overboard and drowned";
+						document.getElementById('featureMessage').innerHTML = "";
+						dallesBoolean2 = false;
+						currentGameDay++;
+						travelDay();
+					} else if(partyAlive[1] === true){
+						partyAlive[1] = false;
+						document.getElementById('messageBox').innerHTML = userSettings.playerNames[1] +
+						" was thrown overboard and drowned";
+						document.getElementById('featureMessage').innerHTML = "";
+						dallesBoolean2 = false;
+						currentGameDay++;
+						travelDay();
+					} else {
+						partyAlive[0] = false;
+						document.getElementById('messageBox').innerHTML = userSettings.playerNames[0] +
+						" was thrown overboard and drowned";
+						document.getElementById('featureMessage').innerHTML = "";
+						dallesBoolean2 = false;
+						gameOverBoolean = true;
 					}
+				} else {
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock.</p>"
+					dallesBoolean2 = false;
+					currentGameDay++;
+					travelDay();
+				}
+			} //Go right 3o% chance of loss of money
+			if(keyName === 50){
+				if(random <= 0.3){
+					userSettings.money = userSettings.money - 200;
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You hit the side of the rock" +
+					" and $200 worth of supplies fell overboard.</p>";
+					dallesBoolean2 = false;
+					currentGameDay++;
+					travelDay();
+				} else {
+					userSettings.money = userSettings.money - 300;
+					document.getElementById('messageBox').innerHTML = "";
+					document.getElementById('featureMessage').innerHTML = "<p>You made it safely by the rock.</p>";
+					dallesBoolean2 = false;
+					currentGameDay++;
+					travelDay();
+				}
 			}
 		} else {
 			if(keyName === 32){
@@ -918,11 +1005,6 @@ if(document.getElementById){
 		document.getElementById('currentMoney').innerHTML = "Current Money: " + userSettings.money;
 		document.getElementById('currentPace').innerHTML = "Current Pace: " + currentPace;
 		document.getElementById('messageBox').innerHTML = "Good Luck on your Journey! Press the Spacebar to Travel One Day or Change your Pace by Pressing Enter.";
-	}
-
-	//Displays the current gameDay settings
-	function gameDaySettings(){
-
 	}
 
 	//Determine weather
@@ -1286,6 +1368,7 @@ if(document.getElementById){
 				getTerrain();
 				getWeather();
 				getDate();
+				document.getElementById('currentMoney').innerHTML = "Current Money: " + userSettings.money;
 				document.getElementById('partyHealth').innerHTML = "Current Health: " + currentHealth;
 				document.getElementById('milesTravelled').innerHTML = "Miles Travelled: " + milesTravelled;
 				document.getElementById('milesLandmark').innerHTML = "Miles To Next Landmark: " + milesLandmark;
@@ -1436,10 +1519,19 @@ if(document.getElementById){
 
 	function gameOver(){
 		document.getElementById('messageBox').innerHTML = "Game Over!\nPress spacebar to try again!";
+		gameOverBoolean = true;
 	}
 
 	function congratulations(){
 		document.getElementById('messageBox').innerHTML = "Congratulations! You made it to Oregon City!";
+		score = milesTravelled + currentHealth + currentMoney + membersAlive + rockScore;
+		terrainImage = "<img src=\"/images/oregoncity.jpg\" >";
+		document.getElementById("imageHolder").innerHTML = terrainImage;
+		document.getElementById('featureMessage').innerHTML = "<p>Congratulations! Your total score is: \n" +
+			"Miles Travelled: " + milesTravelled + "\nCurrent Health: " + currentHealth + "\nCurrent Money: " +
+			userSettings.money + "\nParty Members Alive: " + membersAlive + "\nBonus Score: " + rockScore + "Total Score: " + score + "\nThanks for " +
+			"playing!\nPress the spacebar to return to the main menu.</p>";
+			gameWinBoolean = true;
 	}
 
 } else {
