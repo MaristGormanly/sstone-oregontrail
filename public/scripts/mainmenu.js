@@ -1,15 +1,12 @@
-if(document.addEventListener) {
-	document.addEventListener('keypress', function(event) {
+if (document.addEventListener) {
+	document.addEventListener('keypress', (event) => {
 		const keyName = event.keyCode;
-	
-		if(keyName === 49) {
+		if (keyName === 49) {
 			location.replace("game");
-		}
-		if(keyName === 51) {
+		} else if (keyName === 51) {
 			location.replace("top10");
-		}
-		if(keyName === 52) {
-			if(music.paused) {
+		} else if (keyName === 52) {
+			if (music.paused) {
 				document.getElementById("sound").innerHTML = "4. Turn Sound On";
 			} else {
 				document.getElementById("sound").innerHTML = "4. Turn Sound Off";
@@ -17,22 +14,20 @@ if(document.addEventListener) {
 		}
 	});
 	
-	//Listen for clicks
-	document.addEventListener('click', function(event) {
-		var x = event.target || event.srcElement;
-		var travel = document.getElementById('travel');
-		var learn = document.getElementById('learn');
-		var seeTop10 = document.getElementById('seeTop10');
-		var sound = document.getElementById('sound');
+	// Listen for clicks
+	document.addEventListener('click', (event) => {
+		let x = event.target || event.srcElement;
+		let travel = document.getElementById('travel');
+		let learn = document.getElementById('learn');
+		let seeTop10 = document.getElementById('seeTop10');
+		let sound = document.getElementById('sound');
 		
-		if(x === travel){
+		if (x === travel) {
 			location.replace("game");
-		}
-		if(x === seeTop10){
+		} else if (x === seeTop10) {
 			location.replace("top10");
-		}
-		if(x === sound){
-			if(music.paused) {
+		} else if (x === sound) {
+			if (music.paused) {
 				sound.innerHTML = "4. Turn Sound On";
 			} else {
 				sound.innerHTML = "4. Turn Sound Off";

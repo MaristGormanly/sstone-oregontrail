@@ -1,16 +1,15 @@
 if (typeof(Storage) !== "undefined") {
 	window.onload = window.resizeTo(1160,720);
-	var x = document.cookie;
-	if(x == "musicState=off") {
+	let x = document.cookie;
+	if (x == "musicState=off") {
 		music.autoplay = false;
-	}
-	else {
+	} else {
 		music.autoplay = true;
 	}
-	document.addEventListener('keypress', function(event) {
+
+	document.addEventListener('keypress', (event) => {
 		const keyName = event.keyCode;
-		
-		if(keyName === 52) {
+		if (keyName === 52) {
 			if(music.paused) {
 				music.play();
 				document.cookie = "musicState=on";
@@ -20,7 +19,6 @@ if (typeof(Storage) !== "undefined") {
 			}		
 		}
 	});
-}
-else {
+} else {
 	alert("Sorry. Your browser does not support JavaScript.");
 }

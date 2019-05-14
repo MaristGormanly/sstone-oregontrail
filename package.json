@@ -1,12 +1,12 @@
 {
-  "name": "lab5",
+  "name": "oregon-trail",
   "version": "1.0.0",
-  "description": "lab 5 local git",
-  "main": "\u001b[D\u001b[D\u001b[D\u001blab5-server.js)",
+  "description": "Browser-based game based off the classic Oregon Trail game",
+  "main": "OregonTrail.js)",
   "scripts": {
     "test": "test"
   },
-  "author": "stephen.stone",
+  "author": "Stephen Stone",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.1"
