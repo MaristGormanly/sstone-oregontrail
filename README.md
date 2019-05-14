@@ -1,4 +1,4 @@
-# Oregon Trail - Browser-based game made with node.js, based off the classic Oregon Trail game
+# Oregon Trail - Browser-based game made with node.js
 
 ### Usage
 1. `git clone` this repository

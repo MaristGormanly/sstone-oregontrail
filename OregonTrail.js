@@ -3,23 +3,23 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
+app.get('/', (res) => {
   res.sendFile('views/index.html',{root: __dirname})
 });
 
-app.get('/mainmenu', function (req, res) {
+app.get('/mainmenu', (res) => {
   res.sendFile('views/mainmenu.html',{root: __dirname})
 });
 
-app.get('/top10', function (req, res) {
+app.get('/top10', (res) => {
   res.sendFile('views/top10.html',{root: __dirname})
 });
 
-app.get('/game', function (req, res) {
+app.get('/game', (res) => {
   res.sendFile('views/game.html',{root: __dirname})
 });
 
-app.get('/trail', function (req, res) {
+app.get('/trail', (res) => {
   res.sendFile('views/trail.html',{root: __dirname})
 });
 
@@ -27,14 +27,14 @@ app.get('/trail', function (req, res) {
 let game = require('./controllers/gameController');
 
 // Create API route so we can request a screen by screenid(array index)
-app.get('/game/getNewGameScreen/:screenId', function (req, res) {
+app.get('/game/getNewGameScreen/:screenId', (req, res) => {
 	let gameScreen = game.startGameScreens[req.params.screenId];
 	res.setHeader('Content-Type','text/html');
 	res.send(gameScreen);
 });
 
 // Create API route so we can save profession
-app.get('/game/saveProfession/:profession', function (req, res) {
+app.get('/game/saveProfession/:profession', (req, res) => {
 	var profession = req.params.profession;
 	game.userSettings.profession = profession;
 
@@ -51,7 +51,7 @@ app.get('/game/saveProfession/:profession', function (req, res) {
 });
 
 // Create API route so we can save player names
-app.get('/game/savePlayerName/:playerId/:playerName', function (req, res) {
+app.get('/game/savePlayerName/:playerId/:playerName', (req, res) => {
 	let playerId = req.params.playerId;
 	let playerName = req.params.playerName;
 	game.userSettings.playerNames[playerId] = playerName;
@@ -61,7 +61,7 @@ app.get('/game/savePlayerName/:playerId/:playerName', function (req, res) {
 });
 
 // Create API route so we can save the month
-app.get('/game/saveMonthChoice/:month', function (req, res) {
+app.get('/game/saveMonthChoice/:month', (req, res) => {
 	let month = req.params.month;
 	game.userSettings.month = month;
 
@@ -70,11 +70,11 @@ app.get('/game/saveMonthChoice/:month', function (req, res) {
 });
 
 // Create API route to getSettings
-app.get('/game/getSettings', function (res) {
+app.get('/game/getSettings', (res) => {
 	res.setHeader('Content-Type','application/json');
 	res.send(game.userSettings);
 });
 
-app.listen(1337, function() {
+app.listen(1337, () => {
   console.log('Example app listening on 1337');
 });
